@@ -1,0 +1,21 @@
+{:deps   {:aliases [:dev]}
+
+ :http {:port 9642}
+
+ :nrepl  {:port       9002
+          :middleware [refactor-nrepl.middleware/wrap-refactor]
+          :init-ns    dev}
+
+ :builds {:client {:target           :browser
+                   :compiler-options {:infer-externs :auto}
+                   :js-options       { ;; Temporary -- see https://github.com/thheller/shadow-cljs/issues/948
+                                      :force-library-injection #{"es6/util/makeiterator"}}
+                   :modules          {:client {:entries [nomis-minimal-shadow-cljs-example.cljs.main-cljs]
+                                               :init-fn nomis-minimal-shadow-cljs-example.cljs.main-cljs/init}}
+                   :dev              {:modules    {:client {:entries []}}
+                                      :output-dir "resources/public/compiler-output/client/js"
+                                      :asset-path "/compiler-output/client/js"}
+                   :devtools         {:http-root  "resources/public"
+                                      :after-load nomis-minimal-shadow-cljs-example.cljs.main-cljs/refresh-ui}
+                   :release          {:output-dir "resources/public-prod/compiler-output/client/js"
+                                      :asset-path "/compiler-output/client/js"}}}}

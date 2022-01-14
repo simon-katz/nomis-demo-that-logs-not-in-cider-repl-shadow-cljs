@@ -1,0 +1,36 @@
+{:lint-as {clojure.test.check.properties/for-all
+           clojure.core/let
+           ;;
+           clojure.test.check.clojure-test/defspec
+           clj-kondo.lint-as/def-catch-all
+           ;;
+           library-candidates.nomis-quil/define-wrapper
+           clj-kondo.lint-as/def-catch-all
+           ;;
+           library-candidates.nomis-quil/define-wrapper--simple
+           clj-kondo.lint-as/def-catch-all
+           ;;
+           library-candidates.nomis-quil/define-wrapper--style-recording
+           clj-kondo.lint-as/def-catch-all
+           ;;
+           library-candidates.nomis-quil/define-wrapper--shape
+           clj-kondo.lint-as/def-catch-all
+           ;;
+           library-candidates.nomis-quil/define-wrapper--sketch
+           clj-kondo.lint-as/def-catch-all
+           ;;
+           com.nomistech.clj-utils/dotdot
+           clojure.core/..}
+ :linters {:unused-referred-var
+           {:exclude
+            {clojure.core
+             [c-ratio? c-rational? c-numerator c-denominator c-number?
+              c-+ c-- c-* c-div c-inc c-dec c-< c-<= c-> c->= c-double]
+             ;;
+             library-candidates.nomis-ratios
+             [ratio? rational? numerator denominator number?
+              + - * / inc dec < <= > >= double]}}
+           ;;
+           :unresolved-var
+           {:exclude
+            #{dynne.sampled-sound/fn-sound}}}}
