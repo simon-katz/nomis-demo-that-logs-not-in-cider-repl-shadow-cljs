@@ -2,9 +2,8 @@
 
  :http {:port 9642}
 
- :nrepl  {:port       9002
-          :middleware [refactor-nrepl.middleware/wrap-refactor]
-          :init-ns    dev}
+ :nrepl  {:port    9002
+          :init-ns dev}
 
  :builds {:client {:target           :browser
                    :compiler-options {:infer-externs :auto}
